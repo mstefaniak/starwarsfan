@@ -11,6 +11,8 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "localforage": "^1.7.3",
+    "lodash.debounce": "^4.0.8",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
