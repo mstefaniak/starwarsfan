@@ -4,7 +4,7 @@
     <h3>Episode {{romanNumbers[movie.episode_id]}}</h3>
 
     <button
-      class="movie-back movie-back__primary"
+      class="btn btn-back__primary movie-back"
       @click="goBack">Go back</button>
 
     <div class="movie-details">
@@ -24,22 +24,37 @@
         <label>Opening crawl:</label>
         <span>{{movie.opening_crawl}}</span>
       </div>
+      <div class="movie-details-row">
+        <label>Reviews:</label>
+        <ul v-if="reviews">
+          <li v-for="review in reviews" :key="review.id">
+            <i>{{review.name}}</i> gave <strong>{{review.stars}}/5</strong> note and said: {{review.review}}
+          </li>
+        </ul>
+        <div v-else>
+          <p>No reviews for now.</p>
+          <p>You can add your review
+            <router-link :to="{ name: 'review', params: { id: $route.params.id } }">here</router-link>
+          </p>
+        </div>
+      </div>
     </div>
     <button
-      class="movie-back movie-back__secondary"
+      class="btn btn-back__secondary movie-back"
       @click="goBack">Go back</button>
   </div>
 </template>
 
 <script>
-import Movies from '@/services/movies';
+import { getters } from '@/store';
 
 export default {
   name: 'movie',
   data() {
     return {
       romanNumbers: { 1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'VI', 7: 'VII' },
-      movie: {},
+      movie: getters.getMovieById(this.$route.params.id),
+      reviews: getters.getReviews(this.$route.params.id),
     };
   },
   methods: {
@@ -48,9 +63,6 @@ export default {
         ? this.$router.go(-1)
         : this.$router.push('/');
     },
-  },
-  created() {
-    Movies.getMovieById(this.$route.params.id).then((movie) => { this.movie = movie; });
   },
 };
 </script>
@@ -61,17 +73,5 @@ export default {
     margin: 1em 0 0.5em;
     font-size: 0.9em;
     font-weight: bold;
-  }
-
-  .movie-back {
-    border: none;
-    background-color: #336699;
-    padding: 0.5em 1em;
-    color: white;
-    cursor: pointer;
-  }
-
-  .movie-back__secondary {
-    margin: 1em 0;
   }
 </style>

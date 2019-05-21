@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <header>
-      <img class="logo" src="https://pluspng.com/img-png/star-wars-png-black-and-white-open-2000.png" alt="Star Wars Rulez">
+      <router-link :to="{ name: 'search' }">
+        <img class="logo" src="https://pluspng.com/img-png/star-wars-png-black-and-white-open-2000.png" alt="Star Wars Rulez">
+      </router-link>
+
       <h1>A long time ago in a galaxy far, far away...</h1>
     </header>
     <main>
@@ -51,5 +54,22 @@ header {
   display: block;
   margin: 0 auto;
   height: 30vh;
+}
+
+.btn {
+  border: none;
+  background-color: #336699;
+  padding: 0.5em 1em;
+  color: white;
+  cursor: pointer;
+  min-width: 100px;
+}
+
+.btn-submit {
+  background-color: #c00;
+}
+
+.btn-back__secondary {
+  margin: 1em 0;
 }
 </style>

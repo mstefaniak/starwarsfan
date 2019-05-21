@@ -24,22 +24,6 @@ class Movies {
     return result();
   }
 
-  static getMovieById(id) {
-    const result = async () => {
-      const moviesList = await this.getList();
-
-      const moviesFound = moviesList.filter(movie => +movie.episode_id === +id);
-
-      if (moviesFound.length) {
-        return moviesFound[0];
-      }
-
-      return null;
-    };
-
-    return result();
-  }
-
   static getList() {
     const result = async () => {
       const moviesList = await this.loadData();

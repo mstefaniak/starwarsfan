@@ -6,6 +6,7 @@
         <li>
           <div>{{movie.title}}</div>
           <router-link :to="{ name: 'movie', params: { id: movie.episode_id } }">More read</router-link>
+          <router-link :to="{ name: 'review', params: { id: movie.episode_id } }">Review add</router-link>
         </li>
       </ul>
   </div>

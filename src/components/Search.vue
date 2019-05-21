@@ -16,6 +16,7 @@
 import Movies from '@/services/movies';
 import SearchResults from '@/components/SearchResults';
 import debounce from 'lodash.debounce';
+import { getters, mutations } from '@/store';
 
 export default {
   name: 'search',
@@ -35,16 +36,18 @@ export default {
     },
 
     search() {
-      this.moviesSearch = this.moviesList
-        .filter(movie => movie.title.toLowerCase().match(this.searchValue.toLowerCase()));
+      this.moviesSearch = getters.searchByTitle(this.searchValue);
     },
+
+    storeMovies: mutations.setMovies,
   },
 
   created() {
     this.loading = true;
     Movies.getList().then((data) => {
-      this.moviesList = data;
+      this.storeMovies(data);
       this.loading = false;
+      this.search();
     });
   },
 };
