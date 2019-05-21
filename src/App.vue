@@ -50,7 +50,7 @@ main {
 
 header {
   margin: 0;
-  height: 40vh;
+  height: 42vh;
   padding-top: 20px;
   text-align: center;
 }
@@ -58,7 +58,11 @@ header {
 .logo {
   display: block;
   margin: 0 auto;
-  height: 30vh;
+  height: 25vh;
+}
+
+.menu {
+  margin: 1em auto;
 }
 
 .menu a {
