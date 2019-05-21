@@ -6,6 +6,11 @@
       </router-link>
 
       <h1>A long time ago in a galaxy far, far away...</h1>
+
+      <nav class="menu">
+        <router-link :to="{ name: 'search' }">Home</router-link>
+        <router-link :to="{ name: 'reviews' }">My reviews</router-link>
+      </nav>
     </header>
     <main>
       <router-view></router-view>
@@ -40,7 +45,7 @@ h1 {
 
 main {
   text-align: center;
-  margin: 0 2em;
+  margin: 0 2em 5em;
 }
 
 header {
@@ -54,6 +59,10 @@ header {
   display: block;
   margin: 0 auto;
   height: 30vh;
+}
+
+.menu a {
+  margin: 0 2em;
 }
 
 .btn {

@@ -60,8 +60,8 @@ ul {
 }
 
 li {
-  display: inline-block;
-  margin: 0 10px;
+  display: block;
+  margin: 1em 0;
 }
 
 .search-input {

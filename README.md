@@ -2,6 +2,9 @@
 
 > Star Wars Fan App
 
+Simple App which let you search Star Wars movies, check their details and
+write reviews. Have fun!
+
 ## Build Setup
 
 ``` bash

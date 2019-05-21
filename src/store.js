@@ -34,4 +34,7 @@ export const getters = {
   getReviews(id) {
     return store.reviews[id];
   },
+  getMovies() {
+    return store.movies;
+  },
 };

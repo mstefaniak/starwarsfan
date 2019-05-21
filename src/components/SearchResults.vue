@@ -2,8 +2,8 @@
   <div
     v-if="movies.length"
     class="search-results">
-      <ul v-for="movie in movies" :key="movie.episode_id">
-        <li>
+      <ul>
+        <li v-for="movie in movies" :key="movie.episode_id">
           <div>{{movie.title}}</div>
           <router-link :to="{ name: 'movie', params: { id: movie.episode_id } }">More read</router-link>
           <router-link :to="{ name: 'review', params: { id: movie.episode_id } }">Review add</router-link>
@@ -21,14 +21,5 @@ export default {
       default: [],
     },
   },
-  data() {
-    return {
-      title: 'Search results',
-    };
-  },
 };
 </script>
-
-<style>
-
-</style>

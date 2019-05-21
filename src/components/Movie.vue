@@ -5,7 +5,7 @@
 
     <button
       class="btn btn-back__primary movie-back"
-      @click="goBack">Go back</button>
+      @click="goBack">Back go</button>
 
     <div class="movie-details">
       <div class="movie-details-row">
@@ -28,25 +28,23 @@
         <label>Reviews:</label>
         <ul v-if="reviews">
           <li v-for="review in reviews" :key="review.id">
-            <i>{{review.name}}</i> gave <strong>{{review.stars}}/5</strong> note and said: {{review.review}}
+            <review :review="review" />
           </li>
         </ul>
-        <div v-else>
-          <p>No reviews for now.</p>
-          <p>You can add your review
-            <router-link :to="{ name: 'review', params: { id: $route.params.id } }">here</router-link>
-          </p>
-        </div>
+        <div v-else>No reviews found.</div>
+      </div>
+      <div class="movie-details-row">
+        <router-link :to="{ name: 'review', params: { id: $route.params.id } }">
+          <button class="btn">Review add</button>
+        </router-link>
       </div>
     </div>
-    <button
-      class="btn btn-back__secondary movie-back"
-      @click="goBack">Go back</button>
   </div>
 </template>
 
 <script>
 import { getters } from '@/store';
+import Review from '@/components/Review';
 
 export default {
   name: 'movie',
@@ -57,6 +55,7 @@ export default {
       reviews: getters.getReviews(this.$route.params.id),
     };
   },
+  components: { Review },
   methods: {
     goBack() {
       return window.history.length > 1
@@ -70,8 +69,12 @@ export default {
 <style>
   label {
     display: block;
-    margin: 1em 0 0.5em;
+    margin-bottom: 0.5em;
     font-size: 0.9em;
     font-weight: bold;
+  }
+
+  .movie-details-row {
+    margin: 0.5em 0;
   }
 </style>
