@@ -37,24 +37,14 @@ h1 {
 
 main {
   text-align: center;
-  margin-top: 40px;
+  margin: 0 2em;
 }
 
 header {
   margin: 0;
   height: 40vh;
+  padding-top: 20px;
   text-align: center;
-}
-
-header span {
-  display: block;
-  position: relative;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: .02em;
-  font-weight: 400;
-  box-sizing: border-box;
-  padding-top: 16px;
 }
 
 .logo {

@@ -9,11 +9,11 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Search',
+      name: 'search',
       component: Search,
     }, {
-      path: '/movie/*',
-      name: 'Movie',
+      path: '/movie/:id',
+      name: 'movie',
       component: Movie,
     },
   ],

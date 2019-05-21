@@ -13,9 +13,9 @@
 </template>
 
 <script>
+import Movies from '@/services/movies';
 import SearchResults from '@/components/SearchResults';
 import debounce from 'lodash.debounce';
-import localforage from 'localforage';
 
 export default {
   name: 'search',
@@ -34,29 +34,6 @@ export default {
       debounce(this.search.bind(this), 500)();
     },
 
-    loadMovies() {
-      const request = async () => {
-        const promises = [];
-        const cached = await localforage.getItem('moviesList');
-
-        if (cached !== null) {
-          return cached;
-        }
-
-        for (let i = 1; i <= 7; i += 1) {
-          promises.push(fetch(`https://swapi.co/api/films/${i}/`));
-        }
-
-        const responses = await Promise.all(promises)
-          .then(results => results.map(result => result.json()));
-
-        return Promise.all(responses)
-          .then(data => localforage.setItem('moviesList', data));
-      };
-
-      return request();
-    },
-
     search() {
       this.moviesSearch = this.moviesList
         .filter(movie => movie.title.toLowerCase().match(this.searchValue.toLowerCase()));
@@ -65,7 +42,7 @@ export default {
 
   created() {
     this.loading = true;
-    this.loadMovies().then((data) => {
+    Movies.getList().then((data) => {
       this.moviesList = data;
       this.loading = false;
     });

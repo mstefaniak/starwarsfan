@@ -3,7 +3,10 @@
     v-if="movies.length"
     class="search-results">
       <ul v-for="movie in movies" :key="movie.episode_id">
-        <li>{{movie.title}}</li>
+        <li>
+          <div>{{movie.title}}</div>
+          <router-link :to="{ name: 'movie', params: { id: movie.episode_id } }">More read</router-link>
+        </li>
       </ul>
   </div>
 </template>
@@ -25,7 +28,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 
 </style>
