@@ -20,5 +20,21 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
+## Architecture
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+> store.js
+
+Simple APP store based on Vue.observable. Stores movies and reviews.
+
+> services/movies.js
+
+Data collecting service. Communicating with backend API. Uses localStorage to
+cache data.
+
+> router
+
+Vue router
+
+> components
+
+APP components
